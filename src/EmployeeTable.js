@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import ProductRow from './ProductRow.js';
-class ProductTable extends React.Component {
+import EmployeeRow from './EmployeeRow';
+class EmployeeTable extends React.Component {
 
     render() {
-      var onProductTableUpdate = this.props.onProductTableUpdate;
+      var onEmployeeTableUpdate = this.props.onEmployeeTableUpdate;
       var rowDel = this.props.onRowDel;
       var filterText = this.props.filterText;
-      var product = this.props.products.map(function(product) {
-        if (product.name.indexOf(filterText) === -1) {
+      var Employee = this.props.Employees.map(function(Employee) {
+        if (Employee.name.indexOf(filterText) === -1) {
           return;
         }
-        return (<ProductRow onProductTableUpdate={onProductTableUpdate}
-             product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
+        return (<EmployeeRow onEmployeeTableUpdate={onEmployeeTableUpdate}
+          Employee={Employee} onDelEvent={rowDel.bind(this)} key={Employee.id}/>)
       });
       return (
         <div>
@@ -32,7 +32,7 @@ class ProductTable extends React.Component {
             </thead>
   
             <tbody>
-              {product}
+              {Employee}
   
             </tbody>
   
@@ -44,4 +44,4 @@ class ProductTable extends React.Component {
   
   }
   
-  export default ProductTable;
+  export default EmployeeTable;

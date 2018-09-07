@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
-import Products from './Products.js'
+import Employee from './Employee'
 
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <Header/>
-<Products/> 
+<Employee/> 
 
        
         

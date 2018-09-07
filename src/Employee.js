@@ -1,18 +1,18 @@
 
 import React, { Component } from 'react';
 import SearchBar from './SearchBar.js';
-import ProductTable from './ProductTable.js';
+import EmployeeTable from './EmployeeTable.js';
 
 
-class Products extends React.Component {
+class Employee extends React.Component {
 
   constructor(props) {
     super(props);
-
-    //  this.state.products = [];
+	//just to know about new version
+    //  this.state.Employees = [];
     this.state = {};
     this.state.filterText = "";
-    this.state.products = [
+    this.state.Employees = [
       {
         id: 1,
       
@@ -32,53 +32,53 @@ class Products extends React.Component {
   handleUserInput(filterText) {
     this.setState({filterText: filterText});
   };
-  handleRowDel(product) {
-    var index = this.state.products.indexOf(product);
-    this.state.products.splice(index, 1);
-    this.setState(this.state.products);
+  handleRowDel(Employee) {
+    var index = this.state.Employees.indexOf(Employee);
+    this.state.Employees.splice(index, 1);
+    this.setState(this.state.Employees);
   };
 
   handleAddEvent(evt) {
     var id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
-    var product = {
+    var Employee = {
       id: id,
       name: "",
       price: "",
       qty: 0
     }
-    this.state.products.push(product);
-    this.setState(this.state.products);
+    this.state.Employees.push(Employee);
+    this.setState(this.state.Employees);
 
   }
 
-  handleProductTable(evt) {
+  handleEmployeeTable(evt) {
     var item = {
       id: evt.target.id,
       name: evt.target.name,
       value: evt.target.value
     };
-var products = this.state.products.slice();
-  var newProducts = products.map(function(product) {
+var Employees = this.state.Employees.slice();
+  var newEmployees = Employees.map(function(Employee) {
 
-    for (var key in product) {
-      if (key == item.name && product.id == item.id) {
-        product[key] = item.value;
+    for (var key in Employee) {
+      if (key == item.name && Employee.id == item.id) {
+        Employee[key] = item.value;
 
       }
     }
-    return product;
+    return Employee;
   });
-    this.setState({products:newProducts});
-  //  console.log(this.state.products);
+    this.setState({Employees:newEmployees});
+  //  console.log(this.state.Employees);
   };
   render() {
 
     return (
       <div>
         <SearchBar filterText={this.state.filterText} onUserInput={this.handleUserInput.bind(this)}/>
-        <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)}
+        <EmployeeTable onEmployeeTableUpdate={this.handleEmployeeTable.bind(this)}
          onRowAdd={this.handleAddEvent.bind(this)} onRowDel={this.handleRowDel.bind(this)}
-          products={this.state.products} filterText={this.state.filterText}/>
+         Employees={this.state.Employees} filterText={this.state.filterText}/>
       </div>
     );
 
@@ -86,7 +86,7 @@ var products = this.state.products.slice();
 
 }
 
-  export default Products;
+  export default Employee;
 
   
  
